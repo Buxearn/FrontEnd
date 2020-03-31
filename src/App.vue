@@ -75,4 +75,24 @@ h1, h2, h3, h4, h5, h6, .actoMedium {
   font-style: italic;
   text-shadow: -3px -2px #005bbf, 0 -2px #005bbf, 3px 2px #005bbf, -3px 3px #005bbf;
 }
+input {
+  padding: 10px;
+  border-radius: 7px;
+  font-size: 18px;
+  border: 1px solid black;
+  margin: 5px;
+}
+button {
+  color: white;
+  padding: 10px;
+  border-radius: 7px;
+  font-size: 18px;
+  margin: 5px;
+  background-color: #4f90f3;
+  border: 1px solid #4f90f3;
+}
+button:hover {
+  background-color: #4f9fff;
+  border: 1px solid #4f9fff;
+}
 </style>

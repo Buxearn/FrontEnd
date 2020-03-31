@@ -12,13 +12,11 @@ export default {
 
 <style scoped>
 .panel {
-    /* border-radius: 10px; */
-    /* background: linear-gradient(145deg, #f8ffff, #d1d7dc); */
-    background: #ffffff;
-    box-shadow: 9px 9px 23px #b7bdc1, 
-            -9px -9px 23px #ffffff;
+    border-radius: 10px;
+    background-color: #0a439a;
     padding: 15px;
     width: fit-content;
     height: fit-content;
+    color: white;
 }
 </style>

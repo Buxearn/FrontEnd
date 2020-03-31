@@ -1,45 +1,59 @@
 <template>
-  <div>
+  <div style="main">
+    <h1>Daily Rewards</h1>
     <panel style="margin: auto; margin-top: 35px; text-align: center;">
-      <h3>Claim Your Daily Reward</h3><br>
+      <h3>Claim Your Daily Reward</h3>
+      <br />
       <p>You must complete an offer to use the daily reward</p>
       <div style="margin: auto">
         <h1>{{ countdown }}</h1>
-        <button v-show="countdown === 'Ready'" style="text-align: center" @click="claim()">Claim</button>
+        <button
+          v-show="countdown === 'Ready'"
+          style="text-align: center"
+          @click="claim()"
+        >
+          Claim
+        </button>
       </div>
     </panel>
     <panel style="margin: auto; margin-top: 35px;" class="dailyMain">
-    <!-- <div class="dailyAds">
-      <div class="ad">
-        <h3>Your Ad Here</h3>
-      </div>
-      <div class="ad">
-        <h3>Your Ad Here</h3>
-      </div>
-    </div> -->
-    <div class="dailyPanel">
-      <div class="quests">
-        <h1>Daily Quests</h1>
-        <p>Resets in {{ dayTimer }}</p>
-        <div class="list">
-          <div v-for="(item, index) in daily.redeemed" :key="index">
-            <p>Completed {{ daily.complete }} of {{ item[0] }} offers</p>
-            <button @click="claimDaily(index)" :disabled="daily.complete < item[0] || item[2]" v-show="!item[2]" >Claim {{ item[1] }}</button>
+      <div class="dailyPanel">
+        <div class="quests">
+          <h1>Daily Quests</h1>
+          <p>Resets in {{ dayTimer }}</p>
+          <div class="list">
+            <div v-for="(item, index) in daily.redeemed" :key="index">
+              <p>Completed {{ daily.complete }} of {{ item[0] }} offers</p>
+              <button
+                @click="claimDaily(index)"
+                :disabled="daily.complete < item[0] || item[2]"
+                v-show="!item[2]"
+              >
+                Claim {{ item[1] }}
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="achievements">
+          <h1>Achievements</h1>
+          <div class="list">
+            <div v-for="(item, index) in achivements.redeemed" :key="index">
+              <p>
+                Completed {{ achivements.complete }} of {{ item[0] }} offers
+              </p>
+              <button
+                @click="claimAchievement(index)"
+                :disabled="achivements.complete < item[0] || item[2]"
+                v-show="!item[2]"
+              >
+                Claim {{ item[1] }}
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      <div class="achievements">
-        <h1>Achievements</h1>
-        <div class="list">
-          <div v-for="(item, index) in achivements.redeemed" :key="index">
-            <p>Completed {{ achivements.complete }} of {{ item[0] }} offers</p>
-            <button @click="claimAchievement(index)" :disabled="achivements.complete < item[0] || item[2]" v-show="!item[2]" >Claim {{ item[1] }}</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </panel>
-  
+    </panel>
+
     <!-- <panel style="margin: auto; margin-top: 35px; text-align: center;">
       <h3>Daily Quest</h3><br>
       <h4>Day resets in {{ estReset }}</h4>
@@ -59,113 +73,133 @@
 </template>
 
 <script>
-import panel from '../panel'
+import panel from "../panel";
 
 export default {
-  name: 'Daily',
+  name: "Daily",
   components: {
-    panel
+    panel,
   },
   data() {
     return {
-      account: '',
-      countdown: '00:00:00',
+      account: "",
+      countdown: "00:00:00",
       achivements: [],
       daily: [],
-      dayTimer: ''
-    }
+      dayTimer: "",
+    };
   },
   methods: {
     getCountdown() {
-      const countDownDate = this.account.lastDailyClaim + 86400000
-       const x = setInterval(() => {
-        const now = new Date().getTime()
-        const distance = countDownDate - now
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000)
-        this.countdown = (hours + ":" + minutes + ":" + seconds)
+      const countDownDate = this.account.lastDailyClaim + 86400000;
+      const x = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        this.countdown = hours + ":" + minutes + ":" + seconds;
 
         if (distance < 0) {
           clearInterval(x);
-          this.countdown = "Ready"
+          this.countdown = "Ready";
         }
-      }, 1000)
+      }, 1000);
     },
     claim() {
       fetch(`${this.$apiHostname}/api/claimdaily`, {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json',
-                },
-                body: JSON.stringify({ account: localStorage.account }),
-                mode: 'cors'
-            })
-            .then(() => {
-              fetch(`${this.$apiHostname}/api/account?name=${localStorage.account}`)
-                .then(raw => raw.json())
-                .then(accountData => {
-                  this.account = JSON.parse(accountData)
-                  this.getCountdown()
-                })
-            })
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ account: localStorage.account }),
+        mode: "cors",
+      }).then(() => {
+        fetch(`${this.$apiHostname}/api/account?name=${localStorage.account}`)
+          .then((raw) => raw.json())
+          .then((accountData) => {
+            this.account = JSON.parse(accountData);
+            this.getCountdown();
+          });
+      });
     },
     claimDaily(index) {
       fetch(`${this.$apiHostname}/quests/claim`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-            'content-type': 'application/json',
+          "content-type": "application/json",
         },
         body: JSON.stringify({ index: index, user: localStorage.account }),
-        mode: 'cors'
-      })
-      .then(() => {
-        fetch(`${this.$apiHostname}/quests?name=${localStorage.account}`, { mode: 'cors' })
-        .then(res => res.json())
-        .then(res => this.daily = res)
-      })
+        mode: "cors",
+      }).then(() => {
+        fetch(`${this.$apiHostname}/quests?name=${localStorage.account}`, {
+          mode: "cors",
+        })
+          .then((res) => res.json())
+          .then((res) => (this.daily = res));
+      });
     },
     claimAchievement(index) {
       fetch(`${this.$apiHostname}/achievements/claim`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-            'content-type': 'application/json',
+          "content-type": "application/json",
         },
         body: JSON.stringify({ index: index, user: localStorage.account }),
-        mode: 'cors'
-      })
-      .then(() => {
-        fetch(`${this.$apiHostname}/achievements?name=${localStorage.account}`, { mode: 'cors' })
-        .then(res => res.json())
-        .then(res => this.achivements = res)
-      })
-    }
+        mode: "cors",
+      }).then(() => {
+        fetch(
+          `${this.$apiHostname}/achievements?name=${localStorage.account}`,
+          { mode: "cors" }
+        )
+          .then((res) => res.json())
+          .then((res) => (this.achivements = res));
+      });
+    },
   },
   mounted() {
     fetch(`${this.$apiHostname}/api/account?name=${localStorage.account}`)
-    .then(raw => raw.json())
-    .then(accountData => {
-      this.account = JSON.parse(accountData)
-      this.getCountdown()
+      .then((raw) => raw.json())
+      .then((accountData) => {
+        this.account = JSON.parse(accountData);
+        this.getCountdown();
+      });
+    fetch(`${this.$apiHostname}/quests?name=${localStorage.account}`, {
+      mode: "cors",
     })
-    fetch(`${this.$apiHostname}/quests?name=${localStorage.account}`, { mode: 'cors' })
-      .then(res => res.json())
-      .then(res => this.daily = res)
-    fetch(`${this.$apiHostname}/achievements?name=${localStorage.account}`, { mode: 'cors' })
-      .then(res => res.json())
-      .then(res => this.achivements = res)
+      .then((res) => res.json())
+      .then((res) => (this.daily = res));
+    fetch(`${this.$apiHostname}/achievements?name=${localStorage.account}`, {
+      mode: "cors",
+    })
+      .then((res) => res.json())
+      .then((res) => (this.achivements = res));
     setInterval(() => {
-      const hours = 24 - new Date().getUTCHours()
-      const minutes = 60 - new Date().getUTCMinutes()
-      const seconds = 60 - new Date().getUTCSeconds()
-      this.dayTimer = (hours + "h " + minutes + "m " + seconds + "s")
-    }, 1000)
-  }
-}
+      const hours = 24 - new Date().getUTCHours();
+      const minutes = 60 - new Date().getUTCMinutes();
+      const seconds = 60 - new Date().getUTCSeconds();
+      this.dayTimer = hours + "h " + minutes + "m " + seconds + "s";
+    }, 1000);
+  },
+};
 </script>
 
 <style>
-.questList > p {
+.main {
+  width: calc(100% - 200px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main > * {
+  margin: 15px;
+  text-align: center;
+}
+
+/*.questList > p {
   font-size: 20px;
   border: 1px rgb(180, 180, 180) solid;
   margin: 3px;
@@ -175,7 +209,6 @@ export default {
   background-color: rgba(102, 253, 89, 0.719);
   border: 1px rgba(102, 253, 89, 0.719) solid;
 }
-/* Daily Rewards */
 .dailyMain {
     padding: 25px;
     display: flex;
@@ -236,5 +269,5 @@ export default {
         text-align: center;
         width: 100%;
     }
-}
+}*/
 </style>

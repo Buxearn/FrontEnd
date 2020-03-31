@@ -1,93 +1,188 @@
 <template>
-    <div>
-        <br>
-        <div class="imageBanner" style="text-align: center; margin: auto; color: white; padding-top: 100px; padding-bottom: 100px">
-            <h1>Welcome to Buxearn</h1>
-            <br>
-            <div style="display: inline-block; margin: 10px; padding: 20px; font-size: 22px">
-                <img src="../../assets/gfx2.png" style="height: 250px" class="float">
-                <p>Signin with your Roblox account</p>
-            </div>
-            <div style="display: inline-block; margin: 10px; padding: 20px; font-size: 22px">
-                <img src="http://vignette2.wikia.nocookie.net/roblox/images/6/6d/9e796767641995eb303aeab03efb4990.png/revision/latest?cb=20150926185308" style="height: 250px" class="float">
-                <p>Watch videos and complete tasks</p>
-            </div>
-            <div style="display: inline-block; margin: 10px; padding: 20px; font-size: 22px">
-                <img src="../../assets/gfx3.png" style="height: 250px" class="float">
-                <p>Instantly withdraw Robux!</p>
-            </div>
-        </div>
-        <br>
-        <panel style="margin: auto; text-align: center; padding: 20px; width: 70vw; height: calc(0.77 * 70vw)">
-            <iframe width="100%" height="100%" :src="youtubeKey" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </panel>
-        <br>
-        <Stats/>
-        <iframe src="https://www.buxearn.com/embed1.html" style="height: 125px; width: 100%; border: none; overflow: none"></iframe>
-        <div style="display: flex; flex-wrap: wrap; flex-direction: row; justify-content: center; align-items: center; text-align: center; margin: auto;">
-            <Signin style=" margin: 10px; padding: 20px;"></Signin>
-            <panel style="margin: 10px; padding: 20px">
-                <Cashouts></Cashouts>
-            </panel>
-        </div>
-        <br> 
+  <div class="page">
+    <div class="nav">
+      <h1>BUXEARN</h1>
+      <router-link to="/faq">Help</router-link>
+      <router-link to="/faq">Contact</router-link>
+      <router-link to="/faq">How It Works</router-link>
+      <router-link to="/earn">Sign Up</router-link>
     </div>
+    <div class="top-content">
+      <h1>Earn Robux By Doing Simple Tasks</h1>
+      <p>Complete Simple Surveys, Watch Videos, Play Games, and more...</p>
+    </div>
+    <div class="images">
+      <img src="../../assets/blue_gfx_1.png">
+      <img src="../../assets/blue_gfx_2.png">
+    </div>
+    <div class="stats">
+      <div>
+        <h1>{{ stats[0] }}</h1>
+        <h2>Offers Completed</h2>
+      </div>
+      <div>
+        <h1>{{ stats[1] }}</h1>
+        <h2>Robux Earned</h2>
+      </div>
+    </div>
+    <div class="bottom-content">
+      <div class="video">
+      </div>
+      <div class="steps">
+        <div class="step">
+          <i>Icon</i>
+          <h2>Sign Up</h2>
+        </div>
+        <div class="step">
+          <i>Icon</i>
+          <h2>Earn</h2>
+        </div>
+        <div class="step">
+          <i>Icon</i>
+          <h2>Withdraw</h2>
+        </div>
+      </div>  
+    </div>
+  </div>
 </template>
 
 <script>
-import Stats from '../Stats'
-import panel from '../panel'
-import Signin from './Signin'
-import Cashouts from '../Cashouts'
-
 export default {
-    name: 'Home',
-    components: {
-        Stats,
-        panel,
-        Signin,
-        Cashouts
-    },
-    data() {
-        return {
-            youtubeKey: ''
-        }
-    },
-    mounted() {
-        fetch(`${this.$apiHostname}/api/youtube`)
-            .then(result => result.text())
-            .then(key => this.youtubeKey = 'https://www.youtube.com/embed/' + key)
-    }
-}
+  name: "Home",
+  data() {
+    return {
+      stats: [0, 0],
+    };
+  },
+  mounted() {
+    fetch(`https://api.buxearn.com/stats`)
+      .then((res) => res.json())
+      .then((result) => {
+        this.stats = [
+          Number(result.o).toLocaleString("en"),
+          Number(result.r).toLocaleString("en"),
+        ];
+      });
+  },
+};
 </script>
 
 <style scoped>
-h1 {
-    text-align: center;
+.page {
+  background-color: #0088ff;
+  background-image: url("../../assets/blue_background.png");
 }
-.float:hover {
-    transform: scale(1.08);
+.stats {
+  background-color: #ffffff;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  color: #3e3e3e;
+  text-align: center;
 }
-.float {
-    position: relative;
-    -webkit-animation-name: float;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: ease-in-out;
-    animation-name: float;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
+.stats > div {
+  padding: 25px;
+}
+.stats > div > h1 {
+  font-size: 40px;
+}
+.nav {
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+}
+.nav > h1 {
+  font-size: 45px;
+  font-style: italic;
+  text-shadow: -3px -2px #005bbf, 0 -2px #005bbf, 3px 2px #005bbf,
+    -3px 3px #005bbf;
+}
+.nav > a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 30px;
+  padding: 10px;
+}
+.nav > a:nth-child(5) {
+  border: white 3px solid;
+  border-radius: 20px;
+}
+.nav > a:nth-child(5):hover {
+  background-color: white;
+  color: #0088ff;
+}
+.top-content {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 125px 25px;
+}
+.top-content > * {
+  padding: 5px;
+  z-index: 1;
+}
+.bottom-content {
+  width: 100%;
+  padding: 25px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.steps {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.step {
+  margin: 15px;
+  padding: 15px;
+  color: white;
+  border: 2px solid white;
+  background-color: #2d90ec;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.step > i {
+  position: relative;
+  padding: 15px;
+  border-radius: 30px;
+  color: white;
+  border: 3px solid white;
+  background-color: #2d90ec;
+  top: -25px;
 }
 
-@keyframes float {
-  0%    {top: -1.7px;}
-  50% {top: 1.7px;}
-  100% {top: -1.7px;}
+.images {
+  height: 0px;
+  width: 100%;
+  position: relative;
 }
-@-webkit-keyframes float {
-  0%   {top: -1.7px;}
-  50% {top: 1.7px;}
-  100% {top: -1.7px;}
+.images > img {
+  position: absolute;
+  height: 35vw;
+  width: 56vw;
+  bottom: -10vw;
+  overflow: hidden;
+}
+.images > img:nth-child(1) {
+  left: -20vw;
+  clip-path: polygon(0px 0px, 0% 71.5%, 100% 71.5%, 100% 0%);
+}
+.images > img:nth-child(2) {
+  transform: rotateY(180deg);
+  right: -7.5vw;
+  clip-path: polygon(0px 0px, 0% 71.5%, 47% 71.5%, 47% 100%, 100% 100%, 100% 0%);
 }
 </style>

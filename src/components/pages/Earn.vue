@@ -31,7 +31,6 @@
     <br>
     <div class="imageBanner" style="text-align: center; margin: auto; color: white; padding-top: 100px; padding-bottom: 100px; width: 100vw">
             <div style="display: inline-block; margin: 10px; padding: 20px; font-size: 22px">
-                <img src="../../assets/gfx2.png" style="height: 250px" class="float">
                 <p>Signin with your Roblox account</p>
             </div>
             <div style="display: inline-block; margin: 10px; padding: 20px; font-size: 22px">
@@ -39,7 +38,6 @@
                 <p>Watch videos and complete tasks</p>
             </div>
             <div style="display: inline-block; margin: 10px; padding: 20px; font-size: 22px">
-                <img src="../../assets/gfx3.png" style="height: 250px" class="float">
                 <p>Instantly withdraw Robux!</p>
             </div>
         </div>

@@ -2,9 +2,9 @@
   <div class="page">
     <div class="nav">
       <h1>BUXEARN</h1>
-      <a href="https://discord.gg/j3EYh9j" target="_blank">Help</a>
-      <a href="https://discord.gg/j3EYh9j" target="_blank">Contact</a>
-      <a>How It Works</a>
+      <a class="mobileHide" href="https://discord.gg/j3EYh9j" target="_blank">Help</a>
+      <a class="mobileHide" href="https://discord.gg/j3EYh9j" target="_blank">Contact</a>
+      <a class="mobileHide">How It Works</a>
       <router-link to="/earn">Sign Up</router-link>
     </div>
     <div class="top-content">
@@ -137,20 +137,22 @@ img {
   justify-content: center;
   align-items: center;
   padding: 125px 25px;
-  min-height: 35vh;
+  min-height: 40vw;
 }
 .top-content > * {
   padding: 5px;
   z-index: 1;
 }
 .bottom-content {
-  width: 100%;
   padding: 25px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+}
+.bottom-content > div {
+  margin: 20px;
 }
 .steps {
   display: flex;
@@ -187,18 +189,22 @@ img {
 }
 .images > img {
   position: absolute;
-  height: calc(70vh);
-  width: calc(112vh);
-  bottom: -20vh;
+  height: calc(70vw);
+  width: calc(112vw);
+  bottom: calc(-20vw);
   overflow: hidden;
 }
 .images > img:nth-child(1) {
-  left: -25vw;
+  left: -35vw;
   clip-path: polygon(0px 0px, 0% 71.5%, 100% 71.5%, 100% 0%);
 }
 .images > img:nth-child(2) {
   transform: rotateY(180deg);
-  right: -7.5vw;
+  right: -25vw;
+
+  height: calc(70vw * 1.2);
+  width: calc(112vw * 1.2);
+  bottom: calc(-20vw * 1.2);
   clip-path: polygon(0px 0px, 0% 71.5%, 47% 71.5%, 47% 100%, 100% 100%, 100% 0%);
 }
 .video > iframe {
@@ -206,5 +212,10 @@ img {
   border-radius: 8px;
   width: 350px;
   height: 200px;
+}
+@media screen and (max-width: 720px) {
+  .mobileHide {
+    display: none;
+  }
 }
 </style>

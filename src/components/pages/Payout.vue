@@ -103,4 +103,9 @@ export default {
 .main > * {
   margin: 20px;
 }
+@media screen and (max-width: 720px) {
+ .main {
+    width: 100%;
+ } 
+}
 </style>

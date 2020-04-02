@@ -8,8 +8,8 @@
       <router-link to="/earn">Sign Up</router-link>
     </div>
     <div class="top-content">
-      <h1>Earn Robux By Doing Simple Tasks</h1>
-      <p>Complete Simple Surveys, Watch Videos, Play Games, and more...</p>
+      <h1 style="font-size: 38px">Earn Robux By Doing Simple Tasks</h1>
+      <p style="font-size: 22px">Complete Simple Surveys, Watch Videos, Play Games, and more...</p>
     </div>
     <div class="images">
       <img src="../../assets/blue_gfx_1.png">
@@ -189,9 +189,9 @@ img {
 }
 .images > img {
   position: absolute;
-  height: calc(70vw);
-  width: calc(112vw);
-  bottom: calc(-20vw);
+  height: calc(70vw * 0.9);
+  width: calc(112vw * 0.9);
+  bottom: calc(-20vw * 0.9);
   overflow: hidden;
 }
 .images > img:nth-child(1) {
@@ -202,9 +202,9 @@ img {
   transform: rotateY(180deg);
   right: -25vw;
 
-  height: calc(70vw * 1.2);
-  width: calc(112vw * 1.2);
-  bottom: calc(-20vw * 1.2);
+  height: calc(70vw);
+  width: calc(112vw);
+  bottom: calc(-20vw);
   clip-path: polygon(0px 0px, 0% 71.5%, 47% 71.5%, 47% 100%, 100% 100%, 100% 0%);
 }
 .video > iframe {

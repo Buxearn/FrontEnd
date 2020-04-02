@@ -1,8 +1,18 @@
 <template>
   <div>
-    <Nav v-show="getAccount.loggedin && showMenu">
+    <div class="toggleNav">
+      <a @click="showMenu = !showMenu">
+          <font-awesome-icon icon="bars" />
+      </a>
+    </div>
+    <Nav :class="showMenu ? 'show' : ''" v-show="getAccount.loggedin">
       <div class="avatar">
-        <img :src="'https://www.roblox.com/Thumbs/Avatar.ashx?x=100&y=100&username=' + getAccount.name">
+        <img
+          :src="
+            'https://www.roblox.com/Thumbs/Avatar.ashx?x=100&y=100&username=' +
+              getAccount.name
+          "
+        />
         <h1>{{ getAccount.name }}</h1>
         <h3 class="balance"><span>R$</span>{{ balance }}</h3>
       </div>
@@ -31,7 +41,7 @@
           <font-awesome-icon icon="money-bill" />
           <span>Help</span>
         </router-link>
-        <br>
+        <br />
         <a @click="logout()">
           <span>Logout</span>
         </a>
@@ -48,7 +58,7 @@ export default {
       showMenu: false,
       account: this.updateAccount(),
       balance: 0,
-      page: undefined
+      page: undefined,
     };
   },
   methods: {
@@ -78,7 +88,7 @@ export default {
   },
   watch: {
     $route() {
-      this.page = this.$route.path
+      this.page = this.$route.path;
       this.account = this.updateAccount();
       this.getBalance();
     },
@@ -99,7 +109,7 @@ export default {
 nav {
   padding: 25px 0px 0px 0px;
   width: 200px;
-height: 100%;
+  height: 100%;
   background-color: #11577b;
 }
 nav > .links {
@@ -152,13 +162,30 @@ nav > .links > a:hover {
 .avatar > img {
   border-radius: 75px;
   background-color: white;
-  border: solid 5px #1b3241; 
+  border: solid 5px #1b3241;
+}
+
+.toggleNav {
+  display: none;
 }
 
 @media screen and (max-width: 720px) {
- nav {
+  .toggleNav {
+    display: block;
     width: 100vw;
+    color: white;
+    font-size: 32px;
+    text-align: center;
+    background-color: #11577b;
+  }
+  nav {
+    width: 100%;
     position: absolute;
- } 
+    display: none;
+    height: 100%;
+  }
+  nav.show {
+    display: block;
+  }
 }
 </style>

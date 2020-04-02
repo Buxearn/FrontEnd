@@ -84,4 +84,12 @@ export default {
   justify-content: space-around;
   align-items: center;
 }
+@media screen and (max-width: 720px) {
+ .main {
+    width: 100%;
+ }
+ .enter {
+    flex-direction: column;
+ }
+}
 </style>

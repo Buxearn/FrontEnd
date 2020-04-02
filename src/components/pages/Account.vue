@@ -127,4 +127,9 @@ export default {
 .grid > * {
   /* width: 100%; */
 }
+@media screen and (max-width: 720px) {
+ .main {
+    width: 100%;
+ } 
+}
 </style>

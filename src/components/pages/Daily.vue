@@ -183,8 +183,14 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .dailyMain > div {
   padding: 15px;
+}
+@media screen and (max-width: 720px) {
+ .main {
+    width: 100%;
+ } 
 }
 </style>

@@ -121,4 +121,10 @@ export default {
 .chooseOfferWall > * {
   margin: 5px;
 }
+@media screen and (max-width: 720px) {
+ .main {
+    width: 100%;
+ } 
+}
+
 </style>

@@ -27,7 +27,7 @@
           <font-awesome-icon icon="money-bill" />
           <span>Account</span>
         </router-link>
-        <router-link to="/help">
+        <router-link href="https://discord.gg/j3EYh9j" target="_blank">
           <font-awesome-icon icon="money-bill" />
           <span>Help</span>
         </router-link>
@@ -200,5 +200,10 @@ nav > .links > a:hover {
   border-radius: 75px;
   background-color: white;
   border: solid 5px #1b3241; 
+}
+
+@media screen & (max-width: 720px) {
+
+
 }
 </style>

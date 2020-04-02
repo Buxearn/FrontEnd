@@ -2,9 +2,9 @@
   <div class="page">
     <div class="nav">
       <h1>BUXEARN</h1>
-      <router-link to="/faq">Help</router-link>
-      <router-link to="/faq">Contact</router-link>
-      <router-link to="/faq">How It Works</router-link>
+      <a href="https://discord.gg/j3EYh9j" target="_blank">Help</a>
+      <a href="https://discord.gg/j3EYh9j" target="_blank">Contact</a>
+      <a>How It Works</a>
       <router-link to="/earn">Sign Up</router-link>
     </div>
     <div class="top-content">
@@ -79,7 +79,8 @@ export default {
 .page {
   overflow-x: hidden;
   background-color: #0088ff;
-  background-image: url("../../assets/blue_background.png");
+  background: url("../../assets/blue_background.png");
+  background-size: 100% 100%;
 }
 .stats {
   background-color: #ffffff;
@@ -105,6 +106,9 @@ export default {
   align-items: center;
   justify-content: space-around;
   color: white;
+}
+img {
+  pointer-events: none;
 }
 .nav > h1 {
   font-size: 45px;
@@ -133,7 +137,7 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 125px 25px;
-  min-height: 20vh;
+  min-height: 35vh;
 }
 .top-content > * {
   padding: 5px;
@@ -189,7 +193,7 @@ export default {
   overflow: hidden;
 }
 .images > img:nth-child(1) {
-  left: -20vw;
+  left: -25vw;
   clip-path: polygon(0px 0px, 0% 71.5%, 100% 71.5%, 100% 0%);
 }
 .images > img:nth-child(2) {

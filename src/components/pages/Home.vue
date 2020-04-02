@@ -27,18 +27,20 @@
     </div>
     <div class="bottom-content">
       <div class="video">
+        <iframe :src="youtubeKey">
+        </iframe>
       </div>
       <div class="steps">
         <div class="step">
-          <i>Icon</i>
+          <i><font-awesome-icon icon="user" /></i>
           <h2>Sign Up</h2>
         </div>
         <div class="step">
-          <i>Icon</i>
+          <i><font-awesome-icon icon="money-bill" /></i>
           <h2>Earn</h2>
         </div>
         <div class="step">
-          <i>Icon</i>
+          <i><font-awesome-icon icon="gift" /></i>
           <h2>Withdraw</h2>
         </div>
       </div>  
@@ -52,9 +54,15 @@ export default {
   data() {
     return {
       stats: [0, 0],
+      youtubeKey: ''
     };
   },
   mounted() {
+    fetch(`${this.$apiHostname}/api/youtube`)
+      .then((result) => result.text())
+      .then(
+        (key) => (this.youtubeKey = "https://www.youtube.com/embed/" + key)
+      );
     fetch(`https://api.buxearn.com/stats`)
       .then((res) => res.json())
       .then((result) => {
@@ -69,6 +77,7 @@ export default {
 
 <style scoped>
 .page {
+  overflow-x: hidden;
   background-color: #0088ff;
   background-image: url("../../assets/blue_background.png");
 }
@@ -124,6 +133,7 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 125px 25px;
+  min-height: 20vh;
 }
 .top-content > * {
   padding: 5px;
@@ -153,10 +163,12 @@ export default {
   background-color: #2d90ec;
   text-align: center;
   letter-spacing: 1px;
+  font-size: 24px;
 }
 .step > i {
   position: relative;
   padding: 15px;
+  font-size: 30px;
   border-radius: 30px;
   color: white;
   border: 3px solid white;
@@ -171,9 +183,9 @@ export default {
 }
 .images > img {
   position: absolute;
-  height: 35vw;
-  width: 56vw;
-  bottom: -10vw;
+  height: calc(70vh);
+  width: calc(112vh);
+  bottom: -20vh;
   overflow: hidden;
 }
 .images > img:nth-child(1) {
@@ -184,5 +196,11 @@ export default {
   transform: rotateY(180deg);
   right: -7.5vw;
   clip-path: polygon(0px 0px, 0% 71.5%, 47% 71.5%, 47% 100%, 100% 100%, 100% 0%);
+}
+.video > iframe {
+  border: solid 16px #0a439a;
+  border-radius: 8px;
+  width: 350px;
+  height: 200px;
 }
 </style>

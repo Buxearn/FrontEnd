@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <h1>Payout</h1>
     <panel>
       <h3>Withdraw ROBUX!</h3>
       <p>You must complete at least 2 offers to be eligible to withdraw</p>

@@ -1,7 +1,7 @@
 <template>
-  <div style="main">
+  <div class="main">
     <h1>Daily Rewards</h1>
-    <panel style="margin: auto; margin-top: 35px; text-align: center;">
+    <panel>
       <h3>Claim Your Daily Reward</h3>
       <br />
       <p>You must complete an offer to use the daily reward</p>
@@ -9,15 +9,13 @@
         <h1>{{ countdown }}</h1>
         <button
           v-show="countdown === 'Ready'"
-          style="text-align: center"
           @click="claim()"
         >
           Claim
         </button>
       </div>
     </panel>
-    <panel style="margin: auto; margin-top: 35px;" class="dailyMain">
-      <div class="dailyPanel">
+    <panel class="dailyMain">
         <div class="quests">
           <h1>Daily Quests</h1>
           <p>Resets in {{ dayTimer }}</p>
@@ -51,24 +49,7 @@
             </div>
           </div>
         </div>
-      </div>
     </panel>
-
-    <!-- <panel style="margin: auto; margin-top: 35px; text-align: center;">
-      <h3>Daily Quest</h3><br>
-      <h4>Day resets in {{ estReset }}</h4>
-      <div style="margin: auto" class="questList">
-        <p><strong>Complete 1 offers</strong><button>Claim</button></p>
-        <p><strong>Complete 5 offers</strong><button disabled>2/5</button></p>
-      </div>
-    </panel>
-    <panel style="margin: auto; margin-top: 35px; text-align: center;">
-      <h3>Achievements</h3><br>
-      <div style="margin: auto" class="questList">
-        <p class="complete"><strong>Complete 5 offers</strong></p>
-        <p><strong>Complete 25 offers</strong><button disabled>2/5</button></p>
-      </div>
-    </panel> -->
   </div>
 </template>
 
@@ -198,76 +179,12 @@ export default {
   margin: 15px;
   text-align: center;
 }
-
-/*.questList > p {
-  font-size: 20px;
-  border: 1px rgb(180, 180, 180) solid;
-  margin: 3px;
-  padding: 5px;
-}
-.questList > .complete {
-  background-color: rgba(102, 253, 89, 0.719);
-  border: 1px rgba(102, 253, 89, 0.719) solid;
-}
 .dailyMain {
-    padding: 25px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
-.dailyMain > .dailyAds {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+.dailyMain > div {
+  padding: 15px;
 }
-.dailyMain > .dailyAds > .ad {
-    background-color: white;
-    margin: 5px;
-    padding: 10px;
-}
-.dailyMain > .dailyPanel {
-    padding-top: 25px;
-    padding-bottom: 25px;
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    width: 80%;
-    justify-content: space-evenly;
-}
-.dailyMain > .dailyPanel > .quests {
-    padding: 25px;
-    text-align: center;
-}
-.dailyMain > .dailyPanel > div {
-	width: 300px;
-	max-width: 100%;
-}
-.dailyMain > .dailyPanel > .achievements {
-    padding: 25px;
-}
-.dailyMain > .dailyPanel > div > .list {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    text-align: center;
-}
-.dailyMain > .dailyPanel > div > .list > div {
-    padding: 5px;
-    border-top: rgb(139, 139, 134) 1px solid;
-}
-@media (max-width: 945px) {
-    .dailyMain {
-        flex-direction: column;
-    }
-    .dailyMain > .dailyPanel > .quests, .dailyMain > .dailyPanel > .achievements {
-        border: none;
-    }
-    .dailyMain > .dailyPanel {
-        flex-direction: column;
-        text-align: center;
-        width: 100%;
-    }
-}*/
 </style>

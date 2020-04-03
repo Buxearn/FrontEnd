@@ -7,7 +7,7 @@
     </div>
     <Nav :class="showMenu ? 'show' : ''" v-show="getAccount.loggedin">
       <div class="avatar">
-        <img
+        <img class="grow"
           :src="
             'https://www.roblox.com/Thumbs/Avatar.ashx?x=100&y=100&username=' +
               getAccount.name
@@ -109,7 +109,7 @@ export default {
 nav {
   padding: 25px 0px 0px 0px;
   width: 200px;
-  height: 100%;
+  height: 100vh;
   background-color: #11577b;
 }
 nav > .links {

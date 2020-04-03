@@ -2,9 +2,9 @@
   <div class="main">
     <h1>Payout</h1>
     <panel>
-      <h3>Withdraw ROBUX!</h3>
+      <h3>Withdraw Points!</h3>
       <p>You must complete at least 2 offers to be eligible to withdraw</p>
-      <p>Minimum withdraw: 5 RBX</p>
+      <p>Minimum withdraw: 5</p>
       <br />
       <input type="number" placeholder="Amount" v-model="withdrawAmount" />
       <button :disabled="withdrawAmount < 5" @click="getGroup()">
@@ -97,7 +97,7 @@ export default {
   width: calc(100% - 200px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 .main > * {

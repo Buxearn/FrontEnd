@@ -6,7 +6,7 @@
     </div>
     <div class="rewarded box">
       <h1 style="font-size: 41px;">{{ rewarded }}</h1>
-      <p>Robux Earned</p>
+      <p>Total Earned</p>
     </div>
     <div class="online box">
       <h1>{{ users }}</h1>

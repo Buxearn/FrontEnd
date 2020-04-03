@@ -9,7 +9,7 @@
       </div>
       <button @click="enter()">Enter Giveaway</button>
       <div>
-        <h2>10 R$</h2>
+        <h2>10 Points</h2>
         <h3>Giveaway Amount</h3>
       </div>
     </panel>
@@ -70,7 +70,7 @@ export default {
   width: calc(100% - 200px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 .main > * {

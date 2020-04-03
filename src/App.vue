@@ -108,4 +108,10 @@ button:hover {
   background-color: #4f9fff;
   border: 1px solid #4f9fff;
 }
+button, .grow {
+  transition: 0.3s;
+}
+button:hover, .grow:hover {
+  transform: scale(1.05);
+}
 </style>

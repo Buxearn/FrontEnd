@@ -1,15 +1,16 @@
 <template>
   <div class="page">
     <div class="nav">
-      <h1>BUXEARN</h1>
-      <a class="mobileHide" href="https://discord.gg/j3EYh9j" target="_blank">Help</a>
-      <a class="mobileHide" href="https://discord.gg/j3EYh9j" target="_blank">Contact</a>
-      <a class="mobileHide">How It Works</a>
-      <router-link to="/earn">Sign Up</router-link>
+      <h1 class="grow">BUXEARN</h1>
+      <a class="mobileHide grow" href="https://discord.gg/j3EYh9j" target="_blank">Help</a>
+      <a class="mobileHide grow" href="https://discord.gg/j3EYh9j" target="_blank">Contact</a>
+      <a class="mobileHide grow">How It Works</a>
+      <router-link class="grow" to="/earn">Sign Up</router-link>
     </div>
     <div class="top-content">
-      <h1 style="font-size: 38px">Earn Robux By Doing Simple Tasks</h1>
+      <h1 style="font-size: 38px">Earn By Doing Simple Tasks</h1>
       <p style="font-size: 22px">Complete Simple Surveys, Watch Videos, Play Games, and more...</p>
+      <router-link to="/earn"><font-awesome-icon icon="money-bill" />Get Started</router-link>
     </div>
     <div class="images">
       <img src="../../assets/blue_gfx_1.png">
@@ -22,24 +23,24 @@
       </div>
       <div>
         <h1>{{ stats[1] }}</h1>
-        <h2>Robux Earned</h2>
+        <h2>Total Earned</h2>
       </div>
     </div>
     <div class="bottom-content">
-      <div class="video">
+      <div class="video grow">
         <iframe :src="youtubeKey">
         </iframe>
       </div>
       <div class="steps">
-        <div class="step">
+        <div class="step grow">
           <i><font-awesome-icon icon="user" /></i>
           <h2>Sign Up</h2>
         </div>
-        <div class="step">
+        <div class="step grow">
           <i><font-awesome-icon icon="money-bill" /></i>
           <h2>Earn</h2>
         </div>
-        <div class="step">
+        <div class="step grow">
           <i><font-awesome-icon icon="gift" /></i>
           <h2>Withdraw</h2>
         </div>
@@ -142,6 +143,29 @@ img {
 .top-content > * {
   padding: 5px;
   z-index: 1;
+}
+.top-content > a {
+  display: flex;
+  align-items: center;
+  margin: 15px;
+  padding: 3px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 25px;  
+  background-color: #1583bc;
+  border: 5px solid #1583bc;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 22px 10px rgba(0,94,194,1);
+  -moz-box-shadow: 0px 0px 22px 10px rgba(0,94,194,1);
+  box-shadow: 0px 0px 22px 10px rgba(0,94,194,1);
+}
+.top-content > a > svg {
+  margin-right: 3px;
+  border-radius: 5px 0px 0px 5px;
+  border: 5px solid white;
+  background: white;
+  color: #1583bc;
 }
 .bottom-content {
   padding: 25px;

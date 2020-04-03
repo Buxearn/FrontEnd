@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <h1>Daily Rewards</h1>
-    <panel>
+    <div>
       <h3>Claim Your Daily Reward</h3>
       <br />
       <p>You must complete an offer to use the daily reward</p>
@@ -14,8 +14,8 @@
           Claim
         </button>
       </div>
-    </panel>
-    <panel class="dailyMain">
+    </div>
+    <div class="dailyMain">
         <div class="quests">
           <h1>Daily Quests</h1>
           <p>Resets in {{ dayTimer }}</p>
@@ -49,18 +49,13 @@
             </div>
           </div>
         </div>
-    </panel>
+    </div>
   </div>
 </template>
 
 <script>
-import panel from "../panel";
-
 export default {
   name: "Daily",
-  components: {
-    panel,
-  },
   data() {
     return {
       account: "",
@@ -172,7 +167,7 @@ export default {
   width: calc(100% - 200px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 .main > * {
@@ -187,6 +182,10 @@ export default {
 }
 .dailyMain > div {
   padding: 15px;
+  margin: 10px;
+}
+.list > * {
+  margin: 10px;
 }
 @media screen and (max-width: 720px) {
  .main {

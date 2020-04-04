@@ -2,12 +2,13 @@
   <div>
     <div class="toggleNav">
       <a @click="showMenu = !showMenu">
-          <font-awesome-icon icon="bars" />
+        <font-awesome-icon icon="bars" />
       </a>
     </div>
     <Nav :class="showMenu ? 'show' : ''" v-show="getAccount.loggedin">
       <div class="avatar">
-        <img class="grow"
+        <img
+          class="grow"
           :src="
             'https://www.roblox.com/Thumbs/Avatar.ashx?x=100&y=100&username=' +
               getAccount.name
@@ -18,23 +19,23 @@
       </div>
       <div class="links">
         <router-link to="/earn">
-          <font-awesome-icon icon="money-bill" />
+          <font-awesome-icon icon="tasks" />
           <span>Earn</span>
         </router-link>
         <router-link to="/daily">
-          <font-awesome-icon icon="money-bill" />
+          <font-awesome-icon icon="clock" />
           <span>Daily Reward</span>
         </router-link>
         <router-link to="/giveaway">
-          <font-awesome-icon icon="money-bill" />
+          <font-awesome-icon icon="gift" />
           <span>Giveaways</span>
         </router-link>
         <router-link to="/payout">
-          <font-awesome-icon icon="money-bill" />
+          <font-awesome-icon style="padding-left: 0px; padding-right: 4px" icon="money-check-alt" />
           <span>Payout</span>
         </router-link>
-        <router-link to="/account">
-          <font-awesome-icon icon="money-bill" />
+        <router-link to="/account" style="padding-right: 5px; padding-left: 3px;">
+          <font-awesome-icon icon="user" />
           <span>Account</span>
         </router-link>
         <router-link href="https://discord.gg/j3EYh9j" target="_blank">
@@ -45,6 +46,16 @@
         <a @click="logout()">
           <span>Logout</span>
         </a>
+      </div>
+      <div class="bottom">
+        <div style="display: flex; flex-direction: row; justify-content: space-evenly; padding: 5px;">
+          <router-link to="/policies" style="text-decoration: none; color: inherit">Policies</router-link>
+          <router-link to="/tos" style="text-decoration: none; color: inherit">Terms</router-link>
+        </div>
+        <div class="social">
+          <font-awesome-icon :icon="['fab', 'discord']" />
+          <font-awesome-icon :icon="['fab', 'youtube']" />
+        </div>
       </div>
     </Nav>
   </div>
@@ -107,9 +118,8 @@ export default {
 
 <style scoped>
 nav {
-  padding: 25px 0px 0px 0px;
   width: 200px;
-  height: 100vh;
+  height: 100%;
   background-color: #11577b;
 }
 nav > .links {
@@ -164,7 +174,27 @@ nav > .links > a:hover {
   background-color: white;
   border: solid 5px #1b3241;
 }
-
+.bottom {
+  position: absolute;
+  width: 200px;
+  bottom: 0px;
+  color: white;
+  background-color: #07354d;
+}
+.social {
+  background-color: #0f242f;
+  padding: 5px;
+  font-size: 30px;
+display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.social > svg {
+  padding: 5px;
+}
+.social > svg:hover {
+  color: grey;
+}
 .toggleNav {
   display: none;
 }
@@ -180,12 +210,17 @@ nav > .links > a:hover {
   }
   nav {
     width: 100%;
-    position: absolute;
     display: none;
-    height: 100%;
+    height: fit-content;
   }
   nav.show {
     display: block;
+  }
+  .bottom {
+    position: relative;
+  }
+  .bottom {
+    width: 100%;
   }
 }
 </style>

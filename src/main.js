@@ -13,7 +13,7 @@ import {
   faGift,
   faTasks,
 } from "@fortawesome/free-solid-svg-icons";
-import { faDiscord } from "@fortawesome/free-brands-svg-icons";
+import { faDiscord, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 library.add(
@@ -25,7 +25,8 @@ library.add(
   faUser,
   faGift,
   faDiscord,
-  faTasks
+  faTasks,
+  faYoutube
 );
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 

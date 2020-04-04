@@ -116,6 +116,7 @@ img {
   font-style: italic;
   text-shadow: -3px -2px #005bbf, 0 -2px #005bbf, 3px 2px #005bbf,
     -3px 3px #005bbf;
+  z-index: 5;
 }
 .nav > a {
   color: inherit;
@@ -138,7 +139,7 @@ img {
   justify-content: center;
   align-items: center;
   padding: 125px 25px;
-  min-height: 40vw;
+  min-height: 20vw;  
 }
 .top-content > * {
   padding: 5px;

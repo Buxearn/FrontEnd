@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" style="position: relative">
     <div class="title" v-show="this.$route.name !== 'Home'">
       <h1>BUXEARN</h1>
     </div>
@@ -58,17 +58,18 @@ h6,
   font-family: ActoMedium;
 }
 .footer {
-  position: relative;
-  bottom: 0px;
   text-align: right;
-  right: 10px;
   color: darkslategrey;
   padding: 25px;
 }
 
 .notHomeApp {
   display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vw;
   flex-wrap: wrap;
+  position: relative;
 }
 .notHomeView {
   width: calc(100vw - 200px);
@@ -108,10 +109,17 @@ button:hover {
   background-color: #4f9fff;
   border: 1px solid #4f9fff;
 }
-button, .grow {
+button,
+.grow {
   transition: 0.3s;
 }
-button:hover, .grow:hover {
+button:hover,
+.grow:hover {
   transform: scale(1.05);
+}
+@media screen and (max-width: 720px) {
+  .footer {
+    display: none;
+  }
 }
 </style>

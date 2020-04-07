@@ -6,7 +6,7 @@
       <h3>
         Join Our Discord Server:
         <a
-          href="https://discord.gg/uCAt9n"
+          href="https://discord.gg/MmY64Rn"
           target="_blank"
           style="color: inherit"
           >Here</a
